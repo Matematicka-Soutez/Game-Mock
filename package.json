@@ -1,0 +1,19 @@
+{
+  "name": "game-mock",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "@koa/cors": "^2.2.3",
+    "koa": "^2.6.2",
+    "koa-body": "^4.0.6",
+    "koa-compose": "^4.1.0",
+    "koa-compress": "^3.0.0",
+    "koa-router": "^7.4.0"
+  },
+  "author": "",
+  "license": "ISC"
+}
