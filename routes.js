@@ -51,10 +51,7 @@ router.get('/games/cfb4bc/teams/12345', (ctx, next) => {
 
 // Change game state
 router.post('/games/bgi63c/teams/1/state', authenticateOrganizer, (ctx, next) => {
-  console.log(ctx.request.body)
   const state = parseInt(ctx.request.body.state)
-  console.log(ROLES.map(role => role.id).filter(id => id !== 2))
-  console.log(ROLES.map(role => role.id).filter(id => id !== 2).includes(state))
   if (ROLES.map(role => role.id).filter(id => id !== 2).includes(state)) {
     ctx.body = {
       id: 1,
@@ -64,6 +61,7 @@ router.post('/games/bgi63c/teams/1/state', authenticateOrganizer, (ctx, next) =>
       state: `${ROLES.filter(role => role.id == state).map(role => role.name).join('')} (${state})`,
       possibleMoves: ROLES.filter(role => role.id !== state)
     }
+    return next()
   }
   if (state === 2) {
     throw new responseErrors.BadRequestError('You already have Podvodník selected.')
