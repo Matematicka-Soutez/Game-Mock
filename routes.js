@@ -61,7 +61,7 @@ router.post('/games/bgi63c/teams/1/state', authenticateOrganizer, (ctx, next) =>
       state: `${ROLES.filter(role => role.id == state).map(role => role.name).join('')} (${state})`,
       possibleMoves: ROLES.filter(role => role.id !== state)
     }
-    return next()
+    return
   }
   if (state === 2) {
     throw new responseErrors.BadRequestError('You already have Podvodník selected.')
