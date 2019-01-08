@@ -51,6 +51,7 @@ router.get('/games/cfb4bc/teams/12345', (ctx, next) => {
 
 // Change game state
 router.post('/games/bgi63c/teams/1/state', authenticateOrganizer, (ctx, next) => {
+  console.log(ctx.request.body)
   const state = parseInt(ctx.request.body.state)
   if (ROLES.map(role => role.id).filter(id => id !== 2).includes(state)) {
     ctx.body = {
