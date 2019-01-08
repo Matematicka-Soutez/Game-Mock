@@ -4,6 +4,7 @@ const responseErrors = require('../errors/response')
 
 async function authenticateOrganizer(ctx, next) {
   const data = await authenticateTokenJWT(ctx)
+  console.log(data)
   if (!data || !data.id || data.disabled) {
     throw new responseErrors.UnauthorizedError()
   }
