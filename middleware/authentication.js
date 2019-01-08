@@ -17,6 +17,7 @@ function authenticateTokenJWT(ctx) {
   if (!ctx) {
     throw new Error('Context is missing in authenticateToken function!')
   }
+  console.log(ctx.header)
   const parsedAuthHeader = parseAuthHeader(ctx.header.authorization)
   if (!parsedAuthHeader || !parsedAuthHeader.value
     || !parsedAuthHeader.scheme || parsedAuthHeader.scheme.toLowerCase() !== 'jwt') {
