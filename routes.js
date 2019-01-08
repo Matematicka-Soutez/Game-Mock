@@ -85,7 +85,6 @@ router.delete('/games/bgi63c/teams/1/state', authenticateOrganizer, (ctx, next) 
     state: 'Kamarád (1)',
     possibleMoves: ROLES.filter(role => role.id !== 1)
   }
-  throw new responseErrors.BadRequestError('Unknown target state.')
 })
 router.delete('/games/bgi63c/teams/2/state', authenticateOrganizer, (ctx, next) => {
   throw new responseErrors.BadRequestError('No previous state.')
