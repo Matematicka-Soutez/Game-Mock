@@ -4,12 +4,11 @@ const responseErrors = require('../errors/response')
 
 async function authenticateOrganizer(ctx, next) {
   const data = await authenticateTokenJWT(ctx)
-  console.log(data)
   if (!data || !data.id || data.disabled) {
     throw new responseErrors.UnauthorizedError()
   }
-  log.info(`Organizer id: ${data.id}`)
-  log.info(`Organizer email: ${data.email}`)
+  console.log(`Organizer id: ${data.id}`)
+  console.log(`Organizer email: ${data.email}`)
   ctx.state.organizer = data
   return next()
 }
