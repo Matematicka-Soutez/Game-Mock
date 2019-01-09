@@ -30,8 +30,33 @@ router.use((ctx, next) => {
 })
 
 // Game routes
+// Get teams
+router.get('/games/bgi63c/teams', authenticateOrganizer, (ctx, next) => {
+  ctx.status = 200
+  ctx.body = [{
+    id: 1,
+    name: 'Berusky',
+    number: 42,
+  },{
+    id: 2,
+    name: 'Broucci',
+    number: 37,
+  },{
+    id: 3,
+    name: 'GMA',
+    number: 2,
+  },{
+    id: 4,
+    name: 'Zluty bagr',
+    number: 15,
+  }]
+})
+router.get('/games/cfb4bc/teams', authenticateOrganizer, (ctx, next) => {
+  throw new responseErrors.NotFoundError('Unknown game instance cfb4bc.')
+})
+
 // Get team state
-router.get('/games/bgi63c/teams/1', (ctx, next) => {
+router.get('/games/bgi63c/teams/1', authenticateOrganizer, (ctx, next) => {
   ctx.status = 200
   ctx.body = {
     id: 1,
@@ -42,10 +67,10 @@ router.get('/games/bgi63c/teams/1', (ctx, next) => {
     possibleMoves: ROLES.filter(role => role.id !== 2)
   }
 })
-router.get('/games/bgi63c/teams/12345', (ctx, next) => {
+router.get('/games/bgi63c/teams/12345', authenticateOrganizer, (ctx, next) => {
   throw new responseErrors.NotFoundError('Team 12345 doesn\'t exist.')
 })
-router.get('/games/cfb4bc/teams/12345', (ctx, next) => {
+router.get('/games/cfb4bc/teams/12345', authenticateOrganizer, (ctx, next) => {
   throw new responseErrors.NotFoundError('Unknown game instance cfb4bc.')
 })
 
