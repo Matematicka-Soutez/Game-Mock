@@ -62,7 +62,7 @@ router.get('/games/bgi63c/teams/1', authenticateOrganizer, (ctx, next) => {
     id: 1,
     name: 'Berusky',
     number: 42,
-    score: 4579.45,
+    score: '4579.45',
     state: 'Podvodník (2)',
     possibleMoves: ROLES.filter(role => role.id !== 2)
   }
@@ -83,7 +83,7 @@ router.post('/games/bgi63c/teams/1/state', authenticateOrganizer, (ctx, next) =>
       id: 1,
       name: 'Berusky',
       number: 42,
-      score: 4869.45,
+      score: '4869.45',
       state: `${ROLES.filter(role => role.id == state).map(role => role.name).join('')} (${state})`,
       possibleMoves: ROLES.filter(role => role.id !== state)
     }
@@ -107,7 +107,7 @@ router.delete('/games/bgi63c/teams/1/state', authenticateOrganizer, (ctx, next) 
     id: 1,
     name: 'Berusky',
     number: 42,
-    score: 4349.45,
+    score: '4349.45',
     state: 'Kamarád (1)',
     possibleMoves: ROLES.filter(role => role.id !== 1)
   }
